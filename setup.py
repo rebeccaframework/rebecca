@@ -7,6 +7,8 @@ requires = [
     "psycopg2",
     "pyramid_tm",
     "webhelpers",
+    "deform",
+    "deform_bootstrap",
 ]
 
 tests_require = [

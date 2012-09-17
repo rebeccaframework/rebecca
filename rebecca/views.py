@@ -16,11 +16,11 @@ class ListView(object):
                 count=len(items))
 
 
-def list_view(session, model, columns):
+def list_view(session, model, columns, **kw):
     resolver = DottedNameResolver(caller_package())
     session = resolver.maybe_resolve(session)
     model = resolver.maybe_resolve(model)
-    grid = h.Grid(columns)
+    grid = h.Grid(columns, **kw)
     View = type(model.__name__ + '_ListView',
         (ListView,), {})
     View.session = session

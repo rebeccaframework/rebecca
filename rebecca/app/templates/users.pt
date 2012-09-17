@@ -1,5 +1,10 @@
 <html>
+<head>
+<link rel="stylesheet" type="text/css" href="${request.static_url('deform_bootstrap:static/deform_bootstrap.css')}" >
+</head>
 <body>
+<div class="container">
 ${grid}
+</div>
 </body>
 </html>
