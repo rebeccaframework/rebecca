@@ -1,3 +1,6 @@
+""" helpers for construction of html.
+"""
+
 from markupsafe import Markup
 from webhelpers.html.tags import link_to, checkbox
 from pyramid.threadlocal import get_current_request
@@ -24,7 +27,16 @@ def checkboxmaker(name_attr):
     return maker
 
 class Grid(object):
+    """ helper to make html table
+
+    :param columns: list of tuple (field_name, valueevaluator)
+    :param table_attrs: dict of attributes for table element.
+    :param head_attrs: dict of attributes for thead element.
+    :param row_attrs: dict of attributes for tr element.
+    """
+
     def __init__(self, columns, table_attrs=None, head_attrs=None, row_attrs=None):
+
         self.columns = columns
         self.table_attrs = {}
         if table_attrs:

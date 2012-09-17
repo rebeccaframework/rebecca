@@ -1,9 +1,21 @@
+""" generic views
+"""
+
 from pyramid.path import DottedNameResolver, caller_package
 from . import helpers as h
 from . import sqla
 
 class ListView(object):
-    """ a generic view for SQLAlchemy """
+    """ a generic view for SQLAlchemy.
+
+    This class should not been use directly.
+    Declare subclass and set some class attributes.
+   
+    - session
+    - model
+    - grid
+
+    """
 
 
     def __init__(self, request):
@@ -17,6 +29,14 @@ class ListView(object):
 
 
 def list_view(session, model, columns, **kw):
+    """ create list_view imperatively
+    
+    :param session: session object or dotted_name.
+    :param model: model class or dotted_name.
+    :param columns: column definitions for :class:`rebecca.helpers.Grid`
+    :param kw: additional args for :class:`rebecca.helpers.Grid`
+    """
+
     resolver = DottedNameResolver(caller_package())
     session = resolver.maybe_resolve(session)
     model = resolver.maybe_resolve(model)
